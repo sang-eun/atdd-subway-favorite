@@ -173,11 +173,11 @@ public class FavoriteAcceptanceTest extends AcceptanceTest {
      * When 권한 없는 즐겨찾기를 삭제 시
      * Then 401 에러 발생
      */
-    @DisplayName("즐겨찾기 권한 실패")
+    @DisplayName("즐겨찾기 삭제 권한 실패")
     @Test
     void fail_deleteFavoriteWithoutAuthority() {
         // when
-        String location = "/favorite/1";
+        String location = "/favorites/1";
         ExtractableResponse<Response> response = RestAssured.given().log().all()
                 .when()
                 .delete(location)

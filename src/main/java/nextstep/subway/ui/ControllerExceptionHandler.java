@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import java.util.NoSuchElementException;
+
 @ControllerAdvice
 public class ControllerExceptionHandler {
     @ExceptionHandler(DataIntegrityViolationException.class)
@@ -22,5 +24,10 @@ public class ControllerExceptionHandler {
     @ExceptionHandler(RoleAuthenticationException.class)
     public ResponseEntity<Void> handleNoAuthenticationException(RoleAuthenticationException e) {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+    }
+
+    @ExceptionHandler(NoSuchElementException.class)
+    public ResponseEntity<Void> handleNoSuchElementException(NoSuchElementException e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 }
