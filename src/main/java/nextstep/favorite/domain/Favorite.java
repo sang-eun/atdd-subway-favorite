@@ -25,7 +25,7 @@ public class Favorite {
     private Station target;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "member_id")
+    @JoinColumn(name = "member_email")
     private Member member;
 
     public Favorite(Station source, Station target, Member member) {
