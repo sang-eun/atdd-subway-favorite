@@ -26,8 +26,12 @@ public class MemberService {
     }
 
     public MemberResponse findMember(String email) {
-        Member member = memberRepository.findByEmail(email).orElseThrow(RuntimeException::new);
+        Member member = findMemberByEmail(email);
         return MemberResponse.of(member);
+    }
+
+    public Member findMemberByEmail(String email) {
+        return memberRepository.findByEmail(email).orElseThrow(RuntimeException::new);
     }
 
     @Transactional
